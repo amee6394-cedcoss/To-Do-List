@@ -86,11 +86,11 @@
         $("#add").on("click", function () {
             var val = $("input").val();
             if (val !== '') {
-                $("#mylist").append("<li><input type='checkbox' id='check' name='ch'><span class='t'>" + val + "</span><input class='inp' type='text'><button class='rem'>delete</button><button class='rem1'>edit</button><button class='rem2'>save</button></li>");
+                $("#mylist").append("<li><input type='checkbox' id='check' name='ch'><span class='t'>" + val + "</span><input class='inp' type='text'><button class='rem1'>edit</button><button class='rem2'>save</button><button class='rem'>delete</button></li>");
                 $("input").val("");
                 $(".rem").on("click", function () {
                     $(this).parent().remove();
-                });
+                });                             
 
 
             }
@@ -114,30 +114,16 @@
             $(".rem2").on("click", function () {
                 var x = $(this).siblings(".inp").val().trim();
                 console.log(x);
-                $(this).siblings(".t").html(x);
-                $(".inp").val("");
-            })
+                $(this).siblings(".t").text(x);
+                // $(".inp").val("");
+            });
 
-            // $('input[name="ch"]').click(function () {
-            // $('#mylist > li').clone().appendTo('#mylist1');
-
-
-            // alert("Thanks for checking me");
-
-            // $(".rem3").on("click", function(){
-            // console.log("task");
-            //     var old = $("#mylist");
-            //     var items = $("#mylist li");
-            //     var newList = $("#mylist1");
-            //     items.each(function(index, value){
-            //         newList.append(value);
-            //         return false;
-            //     });
+            
 
 
         });
 
-    })
+    });
 
 
 
