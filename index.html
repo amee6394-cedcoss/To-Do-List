@@ -68,12 +68,16 @@
 <body>
     <div class="a">
         <h1>My To-Do List</h1>
-        <input type="text" placeholder="New item" />
-        <button id="add">Add</button>
-        <ol id="mylist"><b>TODO</b></ol>
-        <ol id="mylist1"><b>COMPLETED TASK</b></ol>
-        <br />
-        <br />
+        Pending task(<span id="demo"></span>)
+        Completed task(<span id="demo1"></span>)
+        <div>
+            <input type="text" placeholder="New item" />
+            <button id="add">Add</button>
+            <p><b>TODO</b></p>
+            <ol id="mylist"></ol>
+            <p><b>COMPLETED TASK</b></p>
+            <ol id="mylist1"></ol>
+        </div>
     </div>
     <div>
         <img class="img" src="to.jpg" alt="">
@@ -81,54 +85,47 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    var i = 0;
     $(function () {
         $("#add").on("click", function () {
             var val = $("input").val();
             if (val !== '') {
                 $("#mylist").append("<li><input type='checkbox' id='check' name='ch'><span class='t'>" + val + "</span><input class='inp' type='text'><button class='rem1'>edit</button><button class='rem2'>save</button><button class='rem'>delete</button></li>");
                 $("input").val("");
+                $('#demo').text($("#mylist").children().length);
+                $('#demo1').text($("#mylist1").children().length);
                 $(".rem").on("click", function () {
                     $(this).parent().remove();
-                });                             
-
-
+                    $('#demo').text($("#mylist").children().length);
+                    $('#demo1').text($("#mylist1").children().length);
+                });
             }
             $('input[name="ch"]').change(function () {
                 if ($(this).prop("checked") == true) {
                     var y = $(this).parent('li');
                     $("#mylist1").append(y);
+
+
                 }
                 else {
                     var y = $(this).parent('li');
                     $("#mylist").append(y);
-                }
-            });
 
+                }
+                $('#demo').text($("#mylist").children().length);
+                $('#demo1').text($("#mylist1").children().length);
+            });
             $(".rem1").on("click", function () {
                 var z = $(this).parent().find('.t').text()
                 $(this).parent().find(".inp").val(z);
 
             });
-
             $(".rem2").on("click", function () {
-                var x = $(this).siblings(".inp").val().trim();
-                console.log(x);
+                var x = $(this).siblings(".inp").val();
                 $(this).siblings(".t").text(x);
                 // $(".inp").val("");
             });
-
-            
-
-
         });
-
     });
-
-
-
-
-
 </script>
 
 </html>
