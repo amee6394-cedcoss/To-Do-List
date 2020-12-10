@@ -119,10 +119,10 @@
                 $(this).parent().find(".inp").val(z);
 
             });
-            $(".rem2").on("click", function () {
+            $(".rem2").off().on("click", function () {
                 var x = $(this).siblings(".inp").val();
                 $(this).siblings(".t").text(x);
-                // $(".inp").val("");
+                $(".inp").val("");
             });
         });
     });
